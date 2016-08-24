@@ -41,15 +41,26 @@
                 <input type="password" id="txtPassword">
             </td>
         </tr>
-          <tr>
+        <tr>
 
             <td>
                 <label class="label-control"> Country</label>
             </td>
             <td>
-               <select id="ddlCountry">
-                <option value="IN">India</option>
-                     <option value="US">United States</option>
+                <select id="ddlCountry">
+                    <option value="IN">India</option>
+                    <option value="US">United States</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+
+            <td>
+                <label class="label-control"> State</label>
+            </td>
+            <td>
+                <select id="ddlState">
+
                 </select>
             </td>
         </tr>
@@ -65,27 +76,29 @@
 
             </td>
         </tr>
-         <tr>
+        <tr>
 
             <td>
-               
+
             </td>
-            <td><input type="checkbox" id="chkAgree">
+            <td>
+                <input type="checkbox" id="chkAgree">
                 <label class="label-control"> I a agree terms and conditions.</label>
-                
+
             </td>
         </tr>
         <tr>
 
             <td>
-               
+
             </td>
             <td>
-               
-               <button id="btnRegister" onclick="registerUser()">Register</button>
+
+                <button id="btnRegister">Register</button>
             </td>
         </tr>
     </table>
+    <script src="lookup.js"></script>
     <script src="register.js"></script>
 </body>
 
