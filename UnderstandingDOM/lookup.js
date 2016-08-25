@@ -1,4 +1,6 @@
-function getCountryList(){
+(function(lookup){
+   
+  lookup.getCountryList = function(){
     return [ 
 {"name": "Afghanistan", "code": "AF"}, 
 {"name": "Åland Islands", "code": "AX"}, 
@@ -244,4 +246,6 @@ function getCountryList(){
 {"name": "Zambia", "code": "ZM"}, 
 {"name": "Zimbabwe", "code": "ZW"} 
 ];
-}
+};  
+})(window.lookup={});
+
