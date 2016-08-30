@@ -1,28 +1,57 @@
-function Person(SSN) {
-    var ssn = SSN;
-    this.firstName = "";
-    this.lastName = "";
-    this.getMaskedSSN = function () {
-        return "xxx-xxx-" + ssn.substring(6, 10);
+function User() {
+    this.username = "";
+    var password = "";
+    var SSN = "";
+    var encrypt = function (data) {
+        return "xxx-xxx-" + data.substring(6, 10);
     };
-    this.address = new Address();
-    this.officeAddress = new Address();
+    this.showPassword = function () {
+        return encrypt(password);
+    };
+    this.showSSN = function () {
+            return encrypt(SSN)
+        }
+        /*this.salary = function (role) {
+            if (role == "manager") {
+                return 1200000;
+            }
+            if (role == "admin") {
+                return 8000000;
+            }
+        };*/
 }
+User.prototype.salary = function (role) {
+    if (role == "manager") {
+        return 1200000;
+    }
+    if (role == "admin") {
+        return 8000000;
+    }
+};
+
+User.application = "Object Oriented JS";
+
+var admin = new User();
+admin.hasAccessToAll = true;
+
+var manager = new User();
+manager.employess = [];
+manager.salary = function () {
+
+    console.log(User.application)
+    return 11212121212212;
+};
+admin.salary = function () {
+    return 34234343;
+};
 
 
-function Address() {
-    this.streetName = "";
-    this.country = "";
-    this.state = "";
-    this.zipcode = "";
-}
 
-var user = new Person("1234567890");
-user.firstName = "kiran";
-user.lastName = "PVS";
-user.address.country = "India";
-user.address.state = "Telangana";
-user.address.zipcode = "500067";
-user.address.streetName = "Maitrivanam";
-console.log(user);
-console.log(user.getMaskedSSN());
+
+
+
+/*console.log(manager);
+console.log(admin);*/
+console.log(manager.salary("manager"));
+console.log(admin.salary("admin"));
+console.log(User.application)
