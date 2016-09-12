@@ -1,7 +1,7 @@
 (function(){
     'use strict'
     //module initilization
-    angular.module("vehicleDeals",["login"]);
+    angular.module("vehicleDeals",["login","register"]);
     //code goes here.
     //consuming the modeule
      angular.module("vehicleDeals")
