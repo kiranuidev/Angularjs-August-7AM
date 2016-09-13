@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="vehicleDeals">
+<html ng-app="vehicleDeals" >
 
 <head>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
@@ -68,14 +68,9 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-        <div ng-controller="registerCtrl">
-            <h1>{{heading}}</h1>
-           <input type="text" ng-model="username">
-            <button ng-click="registerUser()">Register</button>
-        </div>
-        
-         <h1>{{heading}}</h1>
-            <h1>{{user}}</h1>
+       
+       <div ng-include="'app/templates/register.html'"></div>
+     
     </div>
      <!--login features-->
     <script src="app/register/register.js"></script>
