@@ -1,0 +1,18 @@
+Rules to enable the validation.
+
+#1. we should use either ng-form or form.
+
+#2. form must be having a name attribute and declare novalidate.
+
+--control level--
+#3. control must be having name property.
+#4. control must be having ng-model
+
+#5. vailidator.
+     ng-required
+     ng-pattern
+     ng-minlength
+     ng-maxlength
+
+
+
