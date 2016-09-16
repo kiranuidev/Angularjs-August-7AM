@@ -1,34 +1,43 @@
-<div ng-controller="registerCtrl">
+<form name="register" ng-controller="registerCtrl" novalidate>
     <div class="form-horizontal">
         <div class="form-group">
             <label for="inputEmail" class="control-label col-xs-2">First Name</label>
 
             <div class="col-xs-4">
-                <input type="text" class="form-control" placeholder="First Name"  name="firstName"
-                       ng-model="userDetails.firstName">
-             
+                <input type="text" class="form-control" placeholder="First Name" name="firstName" 
+                       ng-model-options="{updateOn:'blur'}"
+                       ng-model="userDetails.firstName" ng-required="true">
+                <div ng-show="register.firstName.$dirty">
+                <p ng-show="register.firstName.$error.required">First Name Required.</p>
+                </div>
+
             </div>
         </div>
         <div class="form-group">
             <label for="inputEmail" class="control-label col-xs-2">Last Name</label>
             <div class="col-xs-4">
-                <input type="text" class="form-control" placeholder="Last Name"
-                       ng-model="userDetails.lastName">
+                <input type="text" name="lastName" ng-required="true" class="form-control" placeholder="Last Name" ng-model="userDetails.lastName">
+                <div ng-show="resiger.lastName.$dirty">
+                    <p ng-show="register.lastName.$error.required">Last Name Required.</p>
+                </div>
             </div>
         </div>
         <div class="form-group">
             <label for="inputEmail" class="control-label col-xs-2">User Name</label>
             <div class="col-xs-4">
-                <input type="text" name="username" class="form-control" placeholder="User Name" ng-model="userDetails.userName">
-            </div>
-        </div>
-          <div class="form-group">
-            <label for="inputEmail" class="control-label col-xs-2">Date Of Birth</label>
-            <div class="col-xs-4">
-                <input type="text" class="form-control"  placeholder="Date Of Birth" ng-model="userDetails.DoB" >
+                <input type="text" name="userName" ng-required="true" ng-minlength="5" ng-maxlength="10" class="form-control" placeholder="User Name" ng-model="userDetails.userName">
+                <p ng-show="register.userName.$error.required">User Name Required.</p>
+                <p ng-show="register.userName.$error.minlength">Minimum length is 5.</p>
+                <p ng-show="register.userName.$error.maxlength">Maximum length is 10</p>
             </div>
         </div>
         <div class="form-group">
+            <label for="inputEmail" class="control-label col-xs-2">Date Of Birth</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" placeholder="Date Of Birth" ng-model="userDetails.DoB">
+            </div>
+        </div>
+        <!--<div class="form-group">
             <label for="inputEmail" class="control-label col-xs-2">State</label>
             <div class="col-xs-4">
                 <select class="form-control" 
@@ -38,45 +47,41 @@
                 </select>
             </div>
         </div>
-        
-      
-       <!-- <div class="form-group">
+        -->
+
+        <div class="form-group">
             <label for="inputEmail" class="control-label col-xs-2">Country</label>
             <div class="col-xs-4">
-                <select class="form-control" 
-                        ng-change="loadStates()"
-                        ng-model="selectedCountry"
-                        ng-options="country.value for country in countries">
+                <select class="form-control" name="country" ng-required="true" ng-change="loadStates()" ng-model="selectedCountry" ng-options="country.value for country in countries">
+                    <option value="">Please Select</option>
+                </select>
+                <p ng-show="register.country.$error.required">Please select Country</p>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="inputEmail" class="control-label col-xs-2">State</label>
+            <div class="col-xs-4">
+                <select class="form-control" ng-model="selectedState" ng-options="item.key for item in stateList">
                     <option value="">Please Select</option>
                 </select>
             </div>
         </div>
-        
-        
-         <div class="form-group">
-            <label for="inputEmail" class="control-label col-xs-2">State</label>
-            <div class="col-xs-4">
-                <select class="form-control" 
-                        
-                        ng-model="selectedState"
-                        ng-options="item.key for item in stateList" >
-                    <option value="">Please Select</option>
-                </select>
-            </div>
-        </div>-->
-       
+
         <div class="form-group">
             <label for="inputEmail" class="control-label col-xs-2">Phone Number</label>
-             <div class="col-xs-4">
-                <input type="text"  class="form-control" placeholder="Phone Number" ng-model="userDetails.phoneNumber">
+            <div class="col-xs-4">
+                <input type="text" class="form-control" placeholder="Phone Number" name="phoneNumber" ng-pattern=/ [0-9]/ ng-model="userDetails.phoneNumber">
+                <p ng-show="register.phoneNumber.$error.pattern">Only Numbers allowed.</p>
             </div>
         </div>
 
         <div class="form-group">
             <label for="inputPassword" class="control-label col-xs-2">Gender</label>
             <div class="col-xs-4">
-                <input type="radio" value="M" ng-model="userDetails.gender" name="gender" >M
-                <input type="radio" value="F" name="gender" ng-model="userDetails.gender"  >F
+                <input type="radio" value="M" ng-model="userDetails.gender" name="gender">M
+                <input type="radio" value="F" name="gender" ng-model="userDetails.gender">F
                 <input type="radio" value="NA" name="gender" ng-model="userDetails.gender">Don't Reveal
             </div>
         </div>
@@ -84,18 +89,15 @@
             <div class="col-xs-offset-2 col-xs-4">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" ng-model="userDetails.terms"
-                              > I Agree Terms</label>
+                        <input type="checkbox" ng-model="userDetails.terms"> I Agree Terms</label>
                 </div>
             </div>
         </div>
         <div class=" form-group ">
             <div class="col-xs-offset-2 col-xs-4 ">
-                <button type="button" class="btn btn-primary" ng-if="userDetails.firstName"
-                  ng-disabled="!userDetails.terms"       
-                        ng-click="registerUser()" >Register</button>
+                <button type="button" class="btn btn-primary" ng-if="userDetails.firstName" ng-disabled="!userDetails.terms" ng-click="registerUser()">Register</button>
             </div>
         </div>
     </div>
-    <pre>{{userDetails}}</pre>
-</div>
+
+</form>
