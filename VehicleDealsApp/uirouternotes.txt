@@ -1,0 +1,13 @@
+step 1
+1. Downlaod the ui routing module by using bower.
+ bower install angular-ui-router --save-dev
+
+2. refer the library in the html.
+
+3. Inject the module ui.router as a dependency to the main module.
+   angular.module("vehicleDeals",["login","register","ui.router"]);
+4. injected the $stateProvider to the config function.
+5. Define the objects for each state.
+6. register the object with state by $stateProvider.state("home",homeObj);
+7. change the header.html and define the url with ui-sref="home"
+8. use <div ui-view></div> in the index.html
