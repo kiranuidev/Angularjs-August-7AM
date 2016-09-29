@@ -33,56 +33,51 @@
     </thead>
 </table>-->
 <div class="row">
- <div class="col-sm-6 col-md-4">
-       
-            <input type="text" class="form-control" placeholder="Search By Model"
-                   ng-model="searchByModel">
-       
-    </div>
-    
-      <div class="col-sm-6 col-md-4">
-       
-            <input type="text" class="form-control" placeholder="Search By Price"
-                   ng-model="searchByPrice"
-                  >
-       
-    </div>
-    <div class="col-sm-6 col-md-4">
-       
-            <input type="text" class="form-control" placeholder="Search By Company"
-                  >
-       
+    <div class="col-sm-4 col-md-4">
+
+        <input type="text" class="form-control" placeholder="Search By Model" ng-model="searchByModel">
+
     </div>
 
+    <div class="col-sm-4 col-md-4">
+
+        <input type="text" class="form-control" placeholder="Search By Price" ng-model="searchByPrice">
+
+    </div>
+     
+    <div class="col-sm-6 col-md-4">
+
+      <button class="btn btn-primary" ng-click="changeSort()">Order</button>
+    </div>
+     <div class="col-sm-6 col-md-6">
+
+        <select ng-model="range"
+                class="form-control"
+                ng-options="item.range for item in filterRange"><option value="">Please Select </option></select>
+
+    </div>
+    
 </div>
+<br>
 <div class="row">
-   
-   
+
+
     <div class="col-sm-6 col-md-4" ng-repeat="vehicle in vehicles|filter:{Model:searchByModel}
-            |filter:{Price:searchByPrice}">
-            <div class="thumbnail">
-                <img src="{{vehicle.picture}}" alt="...">
-                <div class="caption">
-                    <h3>{{vehicle.Model|uppercase}}</h3>
-                    <p>{{vehicle.Make|lowercase}}</p>
-                    <p><i class="fa fa-inr"></i>{{vehicle.Price|currency:""}}</p>
-                     <p>   <a href="#"  class="btn btn-primary" role="button" >Select</a>
-                    
- <p>   <a href="#"  class="btn btn-primary" role="button" >{{$index}}</a>
+            |filter:{Price:searchByPrice}
+            |orderBy:sortBy                                           |rangeFilter:range">
+        <div class="thumbnail">
+            <img src="{{vehicle.picture}}" alt="...">
+            <div class="caption">
+                <h3>{{vehicle.Model|uppercase}}</h3>
+                <p>{{vehicle.Make|lowercase}}</p>
+                <p><i class="fa fa-inr"></i>{{vehicle.Price|currency:""}}</p>
+                <p> <a href="#" ng-click="selectVehicle(vehicle)" class="btn btn-primary" role="button" ng-if="!vehicle.isSelected">Select</a>
+                   
+                    <a href="#" ng-click="removeVehicle(vehicle)" class="btn btn-warning" role="button" ng-if="vehicle.isSelected">Remmove from cart</a>
+
+                    <p> <a href="#" class="btn btn-primary" role="button">{{$index}}</a>
                     </p>
-                </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
