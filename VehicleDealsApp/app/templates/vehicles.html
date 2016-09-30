@@ -66,16 +66,16 @@
             |filter:{Price:searchByPrice}
             |orderBy:sortBy                                           |rangeFilter:range">
         <div class="thumbnail">
-            <img src="{{vehicle.picture}}" alt="...">
+            <img src="{{::vehicle.picture}}" alt="...">
             <div class="caption">
-                <h3>{{vehicle.Model|uppercase}}</h3>
-                <p>{{vehicle.Make|lowercase}}</p>
-                <p><i class="fa fa-inr"></i>{{vehicle.Price|currency:""}}</p>
+                <h3>{{::vehicle.Model|uppercase}}</h3>
+                <p>{{::vehicle.Make|lowercase}}</p>
+                <p><i class="fa fa-inr"></i>{{::vehicle.Price|currency:""}}</p>
                 <p> <a href="#" ng-click="selectVehicle(vehicle)" class="btn btn-primary" role="button" ng-if="!vehicle.isSelected">Select</a>
                    
                     <a href="#" ng-click="removeVehicle(vehicle)" class="btn btn-warning" role="button" ng-if="vehicle.isSelected">Remmove from cart</a>
 
-                    <p> <a href="#" class="btn btn-primary" role="button">{{$index}}</a>
+                    <p> <a href="#" class="btn btn-primary" role="button">{{::$index}}</a>
                     </p>
             </div>
         </div>

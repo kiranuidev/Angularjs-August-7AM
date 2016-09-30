@@ -59,7 +59,17 @@
                     $rootScope.$broadcast("VEHICLE-REMOVED", {
                         veh: vehicle
                     });
-                }
+                };
+
+                $scope.$watch("searchByModel", function (newVal, oldVal) {
+                    console.log("Old Value is: " + oldVal);
+                    console.log("New Value is: " + newVal)
+                });
+
+                setTimeout(function () {
+                    $scope.searchByModel="WagonR";
+                    $scope.$apply();
+                },3000);
 
     }]);
 
