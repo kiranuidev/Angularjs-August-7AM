@@ -151,5 +151,5 @@ Class:     <div class="custom-brand"></div>
     }]);
     
     
-    angular
+    
 })();

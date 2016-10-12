@@ -3,11 +3,12 @@
     //code goes here.
     angular.module("register")
         .controller("registerCtrl",
-            function ($scope, $state, lookupSvc) {
+            function ($scope, $state, lookupSvc,lookupFact) {
                 $scope.userDetails = {
                     terms: false
                 };
-                $scope.countries = lookupSvc.getCountryList();
+               // $scope.countries = lookupSvc.getCountryList();
+               $scope.countries= lookupFact.getCountryList();
 
                 var states = lookupSvc.getStateList();
 
